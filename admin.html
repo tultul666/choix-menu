@@ -1,0 +1,25 @@
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Résultats des Choix</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>Résultats enregistrés</h1>
+    <table id="resultsTable" border="1">
+        <thead><tr><th>Nom</th><th>Menu choisi</th></tr></thead>
+        <tbody></tbody>
+    </table>
+    <script>
+        const results = JSON.parse(localStorage.getItem("menuChoices") || "[]");
+        const tbody = document.querySelector("#resultsTable tbody");
+        results.forEach(entry => {
+            const row = document.createElement("tr");
+            row.innerHTML = `<td>${entry.name}</td><td>${entry.menu}</td>`;
+            tbody.appendChild(row);
+        });
+    </script>
+</body>
+</html>

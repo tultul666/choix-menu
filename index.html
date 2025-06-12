@@ -1,0 +1,51 @@
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Choix de Menu - Sortie Culturelle</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>Choisissez votre menu</h1>
+    <form id="menuForm">
+        <label for="name">Votre nom :</label><br>
+        <input type="text" id="name" name="name" required><br><br>
+        
+    <div class="menu-option">
+        <h3>Menu 1 - Entrecôte</h3>
+        <img src="b3951408-b4c6-4751-9593-18f368584d25.png" alt="Menu 1 - Entrecôte" width="300"><br>
+        <input type="radio" name="menu" value="Menu 1 - Entrecôte"> Choisir ce menu
+    </div>
+    
+    <div class="menu-option">
+        <h3>Menu 2 - Rumsteck</h3>
+        <img src="29374301-7fa9-4ef2-9bbb-2e5b72863188.png" alt="Menu 2 - Rumsteck" width="300"><br>
+        <input type="radio" name="menu" value="Menu 2 - Rumsteck"> Choisir ce menu
+    </div>
+    
+    <div class="menu-option">
+        <h3>Menu 3 - Escalope panée</h3>
+        <img src="7810efbb-8079-49dc-8b62-03453e06650f.png" alt="Menu 3 - Escalope panée" width="300"><br>
+        <input type="radio" name="menu" value="Menu 3 - Escalope panée"> Choisir ce menu
+    </div>
+    
+    <div class="menu-option">
+        <h3>Menu 4 - Brochette (Salade Mêlée)</h3>
+        <img src="3f2e7862-a072-4662-aaca-f355839def09.png" alt="Menu 4 - Brochette (Salade Mêlée)" width="300"><br>
+        <input type="radio" name="menu" value="Menu 4 - Brochette (Salade Mêlée)"> Choisir ce menu
+    </div>
+    
+    <div class="menu-option">
+        <h3>Menu 5 - Brochette (Degustation)</h3>
+        <img src="00ea7828-e546-4b9b-bd5a-37acba649440.png" alt="Menu 5 - Brochette (Degustation)" width="300"><br>
+        <input type="radio" name="menu" value="Menu 5 - Brochette (Degustation)"> Choisir ce menu
+    </div>
+    
+        <br>
+        <button type="submit">Envoyer</button>
+    </form>
+    <p id="confirmation" style="color: green;"></p>
+    <script src="script.js"></script>
+</body>
+</html>
