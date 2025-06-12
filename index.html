@@ -1,83 +1,476 @@
-
 <!DOCTYPE html>
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <title>Choix de Menu - Sortie Culturelle</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Réservation Repas - Sortie Culturelle 2025</title>
     <link rel="stylesheet" href="style.css">
     <style>
-        .menu-option {
-            display: inline-block;
-            text-align: center;
-            margin: 15px;
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
         }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            overflow: hidden;
+        }
+        
+        .header {
+            background: linear-gradient(45deg, #2c3e50, #34495e);
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+        
+        .header h1 {
+            margin: 0;
+            font-size: 2.5em;
+            font-weight: 300;
+        }
+        
+        .event-info {
+            background: #f8f9fa;
+            padding: 20px;
+            text-align: center;
+            border-bottom: 1px solid #e9ecef;
+        }
+        
+        .event-info p {
+            margin: 5px 0;
+            color: #666;
+        }
+        
+        .deadline {
+            background: #fff3cd;
+            color: #856404;
+            padding: 15px;
+            margin: 20px;
+            border-radius: 8px;
+            border-left: 4px solid #ffc107;
+            font-weight: bold;
+        }
+        
+        .form-container {
+            padding: 30px;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: 600;
+            color: #333;
+        }
+        
+        .form-group input[type="text"],
+        .form-group input[type="email"],
+        .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #e9ecef;
+            border-radius: 8px;
+            font-size: 16px;
+            transition: border-color 0.3s;
+        }
+        
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #667eea;
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+        }
+        
+        .menu-section {
+            margin: 30px 0;
+        }
+        
+        .menu-section h2 {
+            text-align: center;
+            color: #2c3e50;
+            margin-bottom: 30px;
+            font-size: 1.8em;
+        }
+        
+        .menu-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            margin: 20px 0;
+        }
+        
+        .menu-option {
+            background: white;
+            border: 3px solid #e9ecef;
+            border-radius: 12px;
+            padding: 20px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+        
+        .menu-option:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+            border-color: #667eea;
+        }
+        
+        .menu-option.selected {
+            border-color: #28a745;
+            background: #f8fff9;
+            transform: translateY(-3px);
+        }
+        
+        .menu-option.selected::after {
+            content: "✓";
+            position: absolute;
+            top: 10px;
+            right: 15px;
+            background: #28a745;
+            color: white;
+            width: 25px;
+            height: 25px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+        }
+        
+        .menu-option img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 8px;
+            margin-bottom: 15px;
+        }
+        
+        .menu-title {
+            font-size: 1.2em;
+            font-weight: bold;
+            color: #2c3e50;
+            margin-bottom: 10px;
+        }
+        
+        .menu-description {
+            color: #666;
+            font-size: 0.9em;
+            margin-bottom: 15px;
+        }
+        
         .menu-option input[type="radio"] {
+            transform: scale(1.2);
             margin-top: 10px;
         }
-        .menu-option img {
-            width: 300px;
-            height: auto;
-            border: 2px solid #ccc;
-            border-radius: 8px;
-            transition: transform 0.2s;
+        
+        .submit-section {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 30px;
+            border-top: 1px solid #e9ecef;
         }
-        .menu-option img:hover {
-            transform: scale(1.05);
-            border-color: #000;
+        
+        .submit-btn {
+            background: linear-gradient(45deg, #28a745, #20c997);
+            color: white;
+            padding: 15px 40px;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.1em;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s;
+            box-shadow: 0 4px 15px rgba(40, 167, 69, 0.3);
+        }
+        
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(40, 167, 69, 0.4);
+        }
+        
+        .submit-btn:disabled {
+            background: #6c757d;
+            cursor: not-allowed;
+            transform: none;
+        }
+        
+        .footer {
+            background: #f8f9fa;
+            padding: 20px;
+            text-align: center;
+            color: #666;
+            font-size: 0.9em;
+        }
+        
+        .admin-link {
+            margin-top: 15px;
+            padding-top: 15px;
+            border-top: 1px solid #e9ecef;
+        }
+        
+        .admin-link a {
+            color: #667eea;
+            text-decoration: none;
+            font-weight: 500;
+        }
+        
+        .admin-link a:hover {
+            text-decoration: underline;
+        }
+        
+        .progress-bar {
+            width: 100%;
+            height: 4px;
+            background: #e9ecef;
+            border-radius: 2px;
+            overflow: hidden;
+            margin: 20px 0;
+        }
+        
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            width: 0%;
+            transition: width 0.5s ease;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .container {
+                margin: 10px;
+                border-radius: 10px;
+            }
+            
+            .header h1 {
+                font-size: 2em;
+            }
+            
+            .menu-grid {
+                grid-template-columns: 1fr;
+                gap: 15px;
+            }
+            
+            .form-container {
+                padding: 20px;
+            }
+        }
+        
+        .error-message {
+            color: #dc3545;
+            font-size: 0.9em;
+            margin-top: 5px;
+            display: none;
+        }
+        
+        .success-message {
+            background: #d4edda;
+            color: #155724;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 20px 0;
+            display: none;
         }
     </style>
 </head>
 <body>
-    <h1>Choisissez votre menu</h1>
-    <form action="https://formspree.io/f/xqabqbpk" method="POST">
-        <input type="hidden" name="_subject" value="Nouveau choix de menu">
-
-        <label for="name">Votre nom :</label><br>
-        <input type="text" id="name" name="Nom" required><br><br>
-
-        <label for="email">Email :</label><br>
-        <input type="email" id="email" name="_replyto"><br><br>
-
-        <div class="menu-option">
-            <label>
-                <img src="b3951408-b4c6-4751-9593-18f368584d25.png" alt="Menu 1 - Entrecôte"><br>
-                <input type="radio" name="Menu" value="Menu 1 - Entrecôte" required> Menu 1
-            </label>
+    <div class="container">
+        <div class="header">
+            <h1>🍽️ Réservation Repas</h1>
+            <p>Service de la Géoinformation</p>
         </div>
-
-        <div class="menu-option">
-            <label>
-                <img src="29374301-7fa9-4ef2-9bbb-2e5b72863188.png" alt="Menu 2 - Rumsteck"><br>
-                <input type="radio" name="Menu" value="Menu 2 - Rumsteck"> Menu 2
-            </label>
+        
+        <div class="event-info">
+            <p><strong>📅 Date :</strong> Vendredi 25 juillet 2025</p>
+            <p><strong>📍 Lieu :</strong> Chez Chico Parrilla Argentina</p>
+            <p><strong>⏰ Heure :</strong> 12h30 - 14h30</p>
         </div>
-
-        <div class="menu-option">
-            <label>
-                <img src="7810efbb-8079-49dc-8b62-03453e06650f.png" alt="Menu 3 - Escalope panée"><br>
-                <input type="radio" name="Menu" value="Menu 3 - Escalope panée"> Menu 3
-            </label>
+        
+        <div class="deadline">
+            ⚠️ <strong>Date limite de réservation :</strong> Jeudi 26 juin 2025 à 18h00
         </div>
-
-        <div class="menu-option">
-            <label>
-                <img src="3f2e7862-a072-4662-aaca-f355839def09.png" alt="Menu 4 - Brochette (Salade Mêlée)"><br>
-                <input type="radio" name="Menu" value="Menu 4 - Brochette (Salade Mêlée)"> Menu 4
-            </label>
+        
+        <div class="progress-bar">
+            <div class="progress-fill" id="progressFill"></div>
         </div>
-
-        <div class="menu-option">
-            <label>
-                <img src="00ea7828-e546-4b9b-bd5a-37acba649440.png" alt="Menu 5 - Brochette (Dégustation)"><br>
-                <input type="radio" name="Menu" value="Menu 5 - Brochette (Dégustation)"> Menu 5
-            </label>
+        
+        <form action="https://formspree.io/f/xqabqbpk" method="POST" id="menuForm" class="form-container">
+            <input type="hidden" name="_subject" value="Nouvelle réservation menu - Service de la Géoinformation">
+            
+            <div class="form-group">
+                <label for="name">Nom complet *</label>
+                <input type="text" id="name" name="Nom" required>
+                <div class="error-message" id="nameError">Veuillez saisir votre nom</div>
+            </div>
+            
+            <div class="menu-section">
+                <h2>Choisissez votre menu *</h2>
+                <div class="menu-grid">
+                    <div class="menu-option" data-menu="menu1">
+                        <img src="b3951408-b4c6-4751-9593-18f368584d25.png" alt="Menu entrecôte avec pommes de terre et légumes">
+                        <div class="menu-title">Menu 1 - Entrecôte</div>
+                        <div class="menu-description">Bife Angosto • Pommes de terre • Légumes • Dessert • Café</div>
+                        <input type="radio" name="Menu" value="Menu 1 - Entrecôte" required>
+                    </div>
+                    
+                    <div class="menu-option" data-menu="menu2">
+                        <img src="29374301-7fa9-4ef2-9bbb-2e5b72863188.png" alt="Menu rumsteck avec accompagnements">
+                        <div class="menu-title">Menu 2 - Rumsteck</div>
+                        <div class="menu-description">Bife de Cuadril • Pommes de terre • 4 sauces • Dessert • Café</div>
+                        <input type="radio" name="Menu" value="Menu 2 - Rumsteck">
+                    </div>
+                    
+                    <div class="menu-option" data-menu="menu3">
+                        <img src="7810efbb-8079-49dc-8b62-03453e06650f.png" alt="Menu escalope panée avec frites">
+                        <div class="menu-title">Menu 3 - Escalope panée</div>
+                        <div class="menu-description">Milanesa de Carne • Frites • Légumes • Dessert • Café</div>
+                        <input type="radio" name="Menu" value="Menu 3 - Escalope panée">
+                    </div>
+                    
+                    <div class="menu-option" data-menu="menu4">
+                        <img src="3f2e7862-a072-4662-aaca-f355839def09.png" alt="Menu brochette avec salade mêlée">
+                        <div class="menu-title">Menu 4 - Brochette Salade</div>
+                        <div class="menu-description">Brochette de Bœuf • Salade Mêlée • Accompagnements • Dessert • Café</div>
+                        <input type="radio" name="Menu" value="Menu 4 - Brochette (Salade Mêlée)">
+                    </div>
+                    
+                    <div class="menu-option" data-menu="menu5">
+                        <img src="00ea7828-e546-4b9b-bd5a-37acba649440.png" alt="Menu brochette dégustation">
+                        <div class="menu-title">Menu 5 - Brochette Dégustation</div>
+                        <div class="menu-description">Brochette de Bœuf • Plato Típico • Dégustation • Dessert • Café/Thé</div>
+                        <input type="radio" name="Menu" value="Menu 5 - Brochette (Dégustation)">
+                    </div>
+                </div>
+                <div class="error-message" id="menuError">Veuillez sélectionner un menu</div>
+            </div>
+            
+            <div class="form-group">
+                <label for="comments">Commentaires (allergies, régimes spéciaux...)</label>
+                <textarea id="comments" name="Commentaires" rows="3" placeholder="Indiquez ici vos allergies, intolérances ou demandes spéciales..."></textarea>
+            </div>
+            
+            <div class="success-message" id="successMessage">
+                ✅ Votre réservation a été envoyée avec succès !
+            </div>
+            
+            <div class="submit-section">
+                <button type="submit" class="submit-btn" id="submitBtn">
+                    📧 Confirmer ma réservation
+                </button>
+                <p style="margin-top: 15px; color: #666; font-size: 0.9em;">
+                    Vous recevrez un email de confirmation dans quelques minutes
+                </p>
+            </div>
+        </form>
+        
+        <div class="footer">
+            <p>Organisation : Samu</p>
+            <p>Pour toute question : samuel.frossard@admin.vs.ch</p>
+            <div class="admin-link">
+                <a href="https://formspree.io/forms" target="_blank">🔧 Interface d'administration</a>
+            </div>
         </div>
+    </div>
 
-        <br><br>
-        <button type="submit">Envoyer</button>
-    </form>
-
-    <p>Un message de confirmation s’affichera après l’envoi.</p>
-    <p style="font-size: 0.8em;"><a href="https://formspree.io/forms" target="_blank">Voir les résultats (admin)</a></p>
+    <script>
+        // Gestion des sélections de menu
+        document.querySelectorAll('.menu-option').forEach(option => {
+            option.addEventListener('click', function() {
+                // Retirer la sélection précédente
+                document.querySelectorAll('.menu-option').forEach(opt => {
+                    opt.classList.remove('selected');
+                });
+                
+                // Ajouter la sélection à l'option cliquée
+                this.classList.add('selected');
+                
+                // Cocher le radio button correspondant
+                const radio = this.querySelector('input[type="radio"]');
+                radio.checked = true;
+                
+                updateProgress();
+            });
+        });
+        
+        // Mise à jour de la barre de progression
+        function updateProgress() {
+            const form = document.getElementById('menuForm');
+            const requiredFields = form.querySelectorAll('[required]');
+            let filledFields = 0;
+            
+            requiredFields.forEach(field => {
+                if (field.type === 'radio') {
+                    if (form.querySelector(`input[name="${field.name}"]:checked`)) {
+                        filledFields++;
+                    }
+                } else if (field.value.trim() !== '') {
+                    filledFields++;
+                }
+            });
+            
+            const progress = (filledFields / requiredFields.length) * 100;
+            document.getElementById('progressFill').style.width = progress + '%';
+        }
+        
+        // Validation en temps réel
+        document.getElementById('name').addEventListener('input', updateProgress);
+        
+        // Validation du formulaire
+        document.getElementById('menuForm').addEventListener('submit', function(e) {
+            let isValid = true;
+            
+            // Validation du nom
+            const name = document.getElementById('name');
+            const nameError = document.getElementById('nameError');
+            if (name.value.trim() === '') {
+                nameError.style.display = 'block';
+                isValid = false;
+            } else {
+                nameError.style.display = 'none';
+            }
+            
+            // Validation du menu
+            const menuSelected = document.querySelector('input[name="Menu"]:checked');
+            const menuError = document.getElementById('menuError');
+            if (!menuSelected) {
+                menuError.style.display = 'block';
+                isValid = false;
+            } else {
+                menuError.style.display = 'none';
+            }
+            
+            if (!isValid) {
+                e.preventDefault();
+                return false;
+            }
+            
+            // Désactiver le bouton pendant l'envoi
+            const submitBtn = document.getElementById('submitBtn');
+            submitBtn.disabled = true;
+            submitBtn.textContent = '⏳ Envoi en cours...';
+        });
+        
+        // Animation au chargement
+        window.addEventListener('load', function() {
+            document.querySelector('.container').style.opacity = '0';
+            document.querySelector('.container').style.transform = 'translateY(20px)';
+            
+            setTimeout(() => {
+                document.querySelector('.container').style.transition = 'all 0.6s ease';
+                document.querySelector('.container').style.opacity = '1';
+                document.querySelector('.container').style.transform = 'translateY(0)';
+            }, 100);
+        });
+    </script>
 </body>
 </html>
