@@ -9,8 +9,13 @@
 <body>
     <h1>Choisissez votre menu</h1>
     <form action="https://formspree.io/f/xqabqbpk" method="POST">
+        <input type="hidden" name="_subject" value="Nouveau choix de menu">
+
         <label for="name">Votre nom :</label><br>
         <input type="text" id="name" name="Nom" required><br><br>
+
+        <label for="email">Email :</label><br>
+        <input type="email" id="email" name="_replyto"><br><br>
 
         <label>Menu :</label><br>
         <input type="radio" name="Menu" value="Menu 1 - Entrecôte" required> Menu 1 - Entrecôte<br>
@@ -21,6 +26,8 @@
 
         <button type="submit">Envoyer</button>
     </form>
+
     <p>Un message de confirmation s’affichera après l’envoi.</p>
+    <p style="font-size: 0.8em;"><a href="https://formspree.io/forms" target="_blank">Voir les résultats (admin)</a></p>
 </body>
 </html>
