@@ -5,6 +5,27 @@
     <meta charset="UTF-8">
     <title>Choix de Menu - Sortie Culturelle</title>
     <link rel="stylesheet" href="style.css">
+    <style>
+        .menu-option {
+            display: inline-block;
+            text-align: center;
+            margin: 15px;
+        }
+        .menu-option input[type="radio"] {
+            margin-top: 10px;
+        }
+        .menu-option img {
+            width: 300px;
+            height: auto;
+            border: 2px solid #ccc;
+            border-radius: 8px;
+            transition: transform 0.2s;
+        }
+        .menu-option img:hover {
+            transform: scale(1.05);
+            border-color: #000;
+        }
+    </style>
 </head>
 <body>
     <h1>Choisissez votre menu</h1>
@@ -17,13 +38,42 @@
         <label for="email">Email :</label><br>
         <input type="email" id="email" name="_replyto"><br><br>
 
-        <label>Menu :</label><br>
-        <input type="radio" name="Menu" value="Menu 1 - Entrecôte" required> Menu 1 - Entrecôte<br>
-        <input type="radio" name="Menu" value="Menu 2 - Rumsteck"> Menu 2 - Rumsteck<br>
-        <input type="radio" name="Menu" value="Menu 3 - Escalope panée"> Menu 3 - Escalope panée<br>
-        <input type="radio" name="Menu" value="Menu 4 - Brochette (Salade Mêlée)"> Menu 4 - Brochette (Salade Mêlée)<br>
-        <input type="radio" name="Menu" value="Menu 5 - Brochette (Dégustation)"> Menu 5 - Brochette (Dégustation)<br><br>
+        <div class="menu-option">
+            <label>
+                <img src="b3951408-b4c6-4751-9593-18f368584d25.png" alt="Menu 1 - Entrecôte"><br>
+                <input type="radio" name="Menu" value="Menu 1 - Entrecôte" required> Menu 1
+            </label>
+        </div>
 
+        <div class="menu-option">
+            <label>
+                <img src="29374301-7fa9-4ef2-9bbb-2e5b72863188.png" alt="Menu 2 - Rumsteck"><br>
+                <input type="radio" name="Menu" value="Menu 2 - Rumsteck"> Menu 2
+            </label>
+        </div>
+
+        <div class="menu-option">
+            <label>
+                <img src="7810efbb-8079-49dc-8b62-03453e06650f.png" alt="Menu 3 - Escalope panée"><br>
+                <input type="radio" name="Menu" value="Menu 3 - Escalope panée"> Menu 3
+            </label>
+        </div>
+
+        <div class="menu-option">
+            <label>
+                <img src="3f2e7862-a072-4662-aaca-f355839def09.png" alt="Menu 4 - Brochette (Salade Mêlée)"><br>
+                <input type="radio" name="Menu" value="Menu 4 - Brochette (Salade Mêlée)"> Menu 4
+            </label>
+        </div>
+
+        <div class="menu-option">
+            <label>
+                <img src="00ea7828-e546-4b9b-bd5a-37acba649440.png" alt="Menu 5 - Brochette (Dégustation)"><br>
+                <input type="radio" name="Menu" value="Menu 5 - Brochette (Dégustation)"> Menu 5
+            </label>
+        </div>
+
+        <br><br>
         <button type="submit">Envoyer</button>
     </form>
 
